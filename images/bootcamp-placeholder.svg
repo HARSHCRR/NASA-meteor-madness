@@ -1,0 +1,57 @@
+<svg width="500" height="300" viewBox="0 0 500 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="screenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a90e2;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#357abd;stop-opacity:0.1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="500" height="300" fill="url(#bgGradient)" rx="12"/>
+  
+  <!-- Screen/Monitor -->
+  <rect x="50" y="50" width="400" height="200" fill="url(#screenGradient)" stroke="rgba(255,255,255,0.2)" stroke-width="2" rx="8"/>
+  
+  <!-- Screen content - simulating code/interface -->
+  <rect x="70" y="70" width="360" height="30" fill="rgba(74,144,226,0.3)" rx="4"/>
+  <rect x="70" y="110" width="280" fill="rgba(255,255,255,0.1)" height="15" rx="2"/>
+  <rect x="70" y="135" width="320" fill="rgba(255,255,255,0.1)" height="15" rx="2"/>
+  <rect x="70" y="160" width="200" fill="rgba(255,255,255,0.1)" height="15" rx="2"/>
+  <rect x="70" y="185" width="250" fill="rgba(255,255,255,0.1)" height="15" rx="2"/>
+  
+  <!-- Interactive elements -->
+  <circle cx="380" cy="85" r="8" fill="rgba(74,144,226,0.6)"/>
+  <circle cx="410" cy="85" r="8" fill="rgba(255,255,255,0.4)"/>
+  
+  <!-- Bottom elements representing buttons/actions -->
+  <rect x="70" y="220" width="80" height="20" fill="rgba(74,144,226,0.5)" rx="10"/>
+  <rect x="160" y="220" width="80" height="20" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.3)" rx="10"/>
+  
+  <!-- Floating particles -->
+  <circle cx="100" cy="40" r="2" fill="rgba(74,144,226,0.6)">
+    <animate attributeName="cy" values="40;35;40" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="400" cy="260" r="3" fill="rgba(255,255,255,0.5)">
+    <animate attributeName="cy" values="260;265;260" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="450" cy="100" r="2" fill="rgba(74,144,226,0.4)">
+    <animate attributeName="cy" values="100;95;100" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Title text -->
+  <text x="250" y="280" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="system-ui, sans-serif" font-size="16" font-weight="600">
+    AIP Bootcamp Interface
+  </text>
+  
+  <!-- Corner accents -->
+  <path d="M50 80 L50 50 L80 50" stroke="rgba(74,144,226,0.5)" stroke-width="2" fill="none"/>
+  <path d="M420 50 L450 50 L450 80" stroke="rgba(74,144,226,0.5)" stroke-width="2" fill="none"/>
+  <path d="M450 220 L450 250 L420 250" stroke="rgba(74,144,226,0.5)" stroke-width="2" fill="none"/>
+  <path d="M80 250 L50 250 L50 220" stroke="rgba(74,144,226,0.5)" stroke-width="2" fill="none"/>
+</svg>
