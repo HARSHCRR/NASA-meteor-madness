@@ -38,10 +38,11 @@ body {
     pointer-events: none;
 }
 
-.loading-logo svg {
-    width: 120px;
+.loading-logo img {
+    width: 360px;
     height: auto;
     animation: pulse 2s ease-in-out infinite;
+    filter: brightness(0) invert(1); /* Make the logo white */
 }
 
 @keyframes pulse {
@@ -78,10 +79,11 @@ body {
     font-size: 1.25rem;
 }
 
-.nav-logo svg {
-    width: 32px;
+.nav-logo img {
+    width: 96px;
     height: auto;
     margin-right: 0.75rem;
+    filter: brightness(0) invert(1); /* Make the logo white */
 }
 
 .nav-links {

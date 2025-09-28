@@ -1,4 +1,4 @@
-// Palantir Website Clone - Main JavaScript
+// AstroNFT Simulator - Main JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
     // Loading screen animation
@@ -280,14 +280,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Console message for developers
 console.log(`
-    🚀 Palantir Website Clone
-    ========================
+    🚀 AstroNFT Simulator
+    =====================
     Built with modern web technologies
     Features:
-    - Responsive design
-    - Smooth animations
-    - Performance optimized
-    - Accessible navigation
+    - Real-time NASA data integration
+    - Interactive asteroid simulations
+    - NFT minting capabilities
+    - Scientific accuracy
+    - Educational storytelling
 `);
 
 // Error handling for missing images

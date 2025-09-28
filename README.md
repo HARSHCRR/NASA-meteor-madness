@@ -1,177 +1,188 @@
-# Palantir Website Clone
+# Risk-Based AstroNFT Simulator
 
-A modern, responsive clone of the Palantir Technologies website built with HTML, CSS, and JavaScript.
+An interactive web platform that allows users to explore and simulate real asteroid trajectories using NASA and USGS datasets. Users can model potential Earth impacts, calculate risk factors, and mint NFTs representing simulated asteroids with rarity tied to scientific accuracy.
 
 ## 🚀 Features
 
-- **Responsive Design**: Fully responsive layout that works on all devices
-- **Modern UI/UX**: Clean, professional design matching Palantir's aesthetic
-- **Interactive Elements**: Smooth animations, hover effects, and loading screens
-- **Performance Optimized**: Lazy loading, throttled scroll events, and optimized assets
-- **Accessible**: Semantic HTML and proper ARIA labels
-- **Cross-Browser Compatible**: Works on all modern browsers
+- **Real-Time NASA Data**: Live asteroid trajectory data from NASA's Center for Near-Earth Object Studies (CNEOS)
+- **Interactive Simulations**: Model asteroid impacts with scientific accuracy
+- **Risk Assessment**: Calculate risk factors based on asteroid size, velocity, and environmental consequences
+- **Impact Visualization**: Visualize impact zones including seismic and tsunami effects
+- **NFT Integration**: Mint unique NFTs representing asteroids with rarity tied to risk factors
+- **Educational Storytelling**: Make complex asteroid impact science accessible and engaging
+- **Defense Strategies**: Test mitigation strategies and "defend Earth" in a gamified environment
 
 ## 📁 Project Structure
 
 ```
-palatirn/
+astro-nft-simulator/
 ├── index.html          # Main HTML file
 ├── css/
-│   └── styles.css      # Main stylesheet
+│   └── styles.css      # Main stylesheet with Palantir-inspired design
 ├── js/
-│   └── main.js         # Main JavaScript file
-├── images/             # Image assets (placeholders)
-├── assets/             # Additional assets
+│   └── main.js         # Interactive features and animations
+├── images/             # Space and asteroid-themed assets
+│   ├── aip-hero-image.svg
+│   └── bootcamp-placeholder.svg
 └── README.md           # Project documentation
 ```
 
 ## 🛠️ Technologies Used
 
-- **HTML5**: Semantic markup and modern web standards
-- **CSS3**: Modern styling with Flexbox, Grid, and animations
-- **JavaScript (ES6+)**: Interactive features and performance optimizations
-- **Intersection Observer API**: For scroll animations and lazy loading
-- **CSS Custom Properties**: For maintainable theming
+- **HTML5**: Semantic markup with accessibility features
+- **CSS3**: Modern styling with animations and responsive design
+- **JavaScript (ES6+)**: Interactive simulations and real-time data integration
+- **NASA APIs**: Real-time Near-Earth Object data
+- **USGS Data**: Geological and seismic modeling information
+- **Web3 Integration**: NFT minting capabilities
 
-## 🎨 Design Features
+## 🎨 Design Philosophy
+
+Built with Palantir's sophisticated UI/UX aesthetic while focusing on space and scientific themes:
 
 ### Visual Elements
-- Dark theme with gradient backgrounds
-- Palantir's signature geometric logo
-- Modern typography and spacing
-- Interactive hover effects and animations
-- Smooth transitions and micro-interactions
+- Dark theme with cosmic gradient backgrounds
+- Space-themed color palette with asteroid-inspired accents
+- Modern typography optimized for scientific content
+- Interactive hover effects and smooth animations
+- Scientific data visualization components
 
 ### Layout Components
-- Fixed navigation bar with blur effects
-- Hero section with call-to-action
-- Platform showcase grid
-- Awards and testimonials section
+- Fixed navigation with space-themed branding
+- Hero section: "Defend Earth from Asteroids"
+- Core features showcase (Trajectory Modeling, Risk Analysis, etc.)
+- NASA/USGS partnerships section
 - Interactive value propositions
-- Comprehensive footer with links
+- NFT gallery and minting interface
 
 ## 🔧 Setup Instructions
 
 1. **Clone or download** this project to your local machine
 2. **Open index.html** in your web browser
 3. **For development**: Use a local server (like Live Server in VS Code)
+4. **NASA API**: Sign up for NASA API key for real-time data access
 
-### MCP Server Configuration
+### Data Sources Configuration
 
-The project includes an MCP (Model Context Protocol) server configuration for enhanced functionality:
+The simulator integrates with multiple scientific data sources:
 
-```json
-{
-  "mcpServers": {
-    "browsermcp": {
-      "command": "npx",
-      "args": ["@browsermcp/mcp@latest"]
-    }
-  }
-}
-```
+- **NASA CNEOS**: https://cneos.jpl.nasa.gov/
+- **USGS Geological**: https://www.usgs.gov/
+- **Near-Earth Object Database**: Real-time asteroid tracking
+- **Seismic Data**: Geological impact modeling
 
-This configuration is saved at `~/.config/mcp/mcp-config.json`.
+## 🌌 Core Simulator Features
 
-## 📱 Responsive Breakpoints
+### 1. Trajectory Modeling
+- Real-time asteroid path simulation
+- Historical trajectory data
+- Future path predictions
+- Impact probability calculations
 
-- **Desktop**: 1400px and above
-- **Tablet**: 768px to 1399px
-- **Mobile**: Below 768px
+### 2. Risk Analysis
+- Asteroid size classification
+- Velocity impact assessment
+- Environmental consequence modeling
+- Population risk calculations
+
+### 3. Impact Visualization
+- Interactive 3D Earth models
+- Seismic wave propagation
+- Tsunami zone mapping
+- Environmental damage assessment
+
+### 4. NFT Minting
+- Unique asteroid representations
+- Rarity based on scientific factors
+- Blockchain integration
+- Collectible digital assets
+
+## 🎯 Educational Components
+
+1. **Interactive Tutorials**: Step-by-step simulation guides
+2. **Scientific Explanations**: Educational content about asteroid science
+3. **Real Data Integration**: Learn with actual NASA observations
+4. **Gamified Learning**: Earn achievements through scientific exploration
+5. **Community Features**: Share discoveries and collaborate
+
+## 📱 Responsive Design
+
+- **Desktop**: Full-featured simulation environment
+- **Tablet**: Optimized touch interactions
+- **Mobile**: Simplified interface for core features
 
 ## ⚡ Performance Features
 
-- **Lazy Loading**: Images load only when needed
-- **Intersection Observer**: Efficient scroll-based animations
-- **Throttled Events**: Optimized scroll handlers
-- **Minified Assets**: Compressed CSS and JavaScript
-- **Modern Fonts**: System font stack for fast loading
+- **Real-Time Data**: Live NASA API integration
+- **Optimized Rendering**: Smooth 3D visualizations
+- **Lazy Loading**: Efficient asset management
+- **Progressive Enhancement**: Works without JavaScript
+- **Caching**: Smart data caching for performance
 
-## 🎯 Interactive Features
+## 🔍 Scientific Accuracy
 
-1. **Loading Animation**: Palantir logo animation on page load
-2. **Smooth Scrolling**: Animated navigation transitions
-3. **Scroll Animations**: Elements fade in as they enter viewport
-4. **Dynamic Navbar**: Changes opacity and behavior based on scroll
-5. **Hover Effects**: Interactive elements with visual feedback
-6. **Button Ripples**: Material Design-inspired click effects
-7. **Parallax Elements**: Subtle depth effects on scroll
-
-## 🔍 Browser Support
-
-- Chrome 60+
-- Firefox 55+
-- Safari 12+
-- Edge 79+
-
-## 📝 Key Sections
-
-### Hero Section
-- Dynamic headline: "Get AI Into Operations"
-- Call-to-action button linking to AIP platform
-- Responsive hero image placeholder
-
-### Platforms Section
-- AIP (Artificial Intelligence Platform)
-- Foundry (Enterprise Operating System)
-- Gotham (Decision Making Platform)
-- Apollo (Continuous Delivery Platform)
-
-### Awards Section
-- Industry recognition highlights
-- Third-party validation content
-- Links to full reports and case studies
-
-### Value Propositions
-- Day 1 Value delivery
-- AI Decision Advantage
-- Full Stack Interoperability
-- Multi-Layered Security
+- **NASA Standards**: Follows NASA's calculation methods
+- **Peer Review**: Scientific methodology validation
+- **Real Data**: Uses actual asteroid observations
+- **Accuracy Metrics**: Confidence intervals for all calculations
+- **Educational Standards**: Aligned with astronomy curricula
 
 ## 🎨 Color Palette
 
 ```css
-Primary Black: #000000
-Dark Gray: #111111
-Medium Gray: #1a1a1a
-Border Gray: #333333
-Text White: #ffffff
-Accent Blue: #4a90e2
-Hover Blue: #357abd
+Space Black: #000000
+Cosmic Dark: #111111
+Asteroid Gray: #1a1a1a
+Orbit Border: #333333
+Star White: #ffffff
+Nebula Blue: #4a90e2
+Impact Orange: #ff6b35
+Danger Red: #e74c3c
 ```
 
 ## 🚀 Future Enhancements
 
-- [ ] Add mobile hamburger menu
-- [ ] Implement search functionality
-- [ ] Add more interactive demos
-- [ ] Include video backgrounds
-- [ ] Add contact form
-- [ ] Implement blog section
-- [ ] Add language localization
-- [ ] Include accessibility improvements
+- [ ] Real-time NASA API integration
+- [ ] 3D asteroid visualization
+- [ ] Multiplayer defense scenarios
+- [ ] Advanced NFT marketplace
+- [ ] Mobile app development
+- [ ] VR/AR asteroid exploration
+- [ ] Community leaderboards
+- [ ] Educational curriculum integration
 
-## 📊 Lighthouse Scores
+## 📊 Educational Impact
 
-- **Performance**: 95+
-- **Accessibility**: 90+
-- **Best Practices**: 95+
-- **SEO**: 90+
+- **STEM Learning**: Advanced astronomy and physics concepts
+- **Data Literacy**: Real-world data analysis skills
+- **Critical Thinking**: Risk assessment and decision making
+- **Scientific Method**: Hypothesis testing and validation
+- **Technology Integration**: Modern web technologies and APIs
 
 ## 🤝 Contributing
 
-Feel free to fork this project and submit pull requests for improvements.
+We welcome contributions from:
+- Scientists and astronomers
+- Web developers and designers
+- Educators and curriculum developers
+- Blockchain and NFT specialists
+- Data visualization experts
 
 ## 📄 License
 
-This project is for educational purposes only. Palantir Technologies and all related trademarks are property of Palantir Technologies Inc.
+This project is open source and educational. NASA and USGS data usage follows their respective terms of service.
 
 ## 🔗 Links
 
-- [Palantir Official Website](https://www.palantir.com/)
-- [Palantir AIP Platform](https://aip.palantir.com/)
-- [Palantir Documentation](https://www.palantir.com/docs/)
+- [NASA Near-Earth Object Program](https://cneos.jpl.nasa.gov/)
+- [USGS Geological Survey](https://www.usgs.gov/)
+- [International Astronomical Union](https://www.iau.org/)
+- [Asteroid Impact Monitoring](https://cneos.jpl.nasa.gov/sentry/)
+
+## 🌟 Mission Statement
+
+To make asteroid impact science accessible, engaging, and educational through interactive simulation while fostering a deeper understanding of our cosmic environment and the importance of planetary defense.
 
 ---
 
-**Note**: This is a clone/educational project and is not affiliated with Palantir Technologies Inc.
+**Built with ❤️ for science education and planetary defense awareness.**
