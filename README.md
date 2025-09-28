@@ -1,4 +1,4 @@
-# Risk-Based AstroNFT Simulator
+# Risk-Based AstroNFT Simulator (NASA Meteor Madness)
 
 An interactive web platform that allows users to explore and simulate real asteroid trajectories using NASA and USGS datasets. Users can model potential Earth impacts, calculate risk factors, and mint NFTs representing simulated asteroids with rarity tied to scientific accuracy.
 
@@ -24,6 +24,7 @@ astro-nft-simulator/
 ├── images/             # Space and asteroid-themed assets
 │   ├── aip-hero-image.svg
 │   └── bootcamp-placeholder.svg
+├── Untitled design (1).png  # Custom asteroid logo
 └── README.md           # Project documentation
 ```
 
