@@ -1,189 +1,223 @@
-# Risk-Based AstroNFT Simulator (NASA Meteor Madness)
+# 🌌 Risk-Based AstroNFT Simulator
 
-An interactive web platform that allows users to explore and simulate real asteroid trajectories using NASA and USGS datasets. Users can model potential Earth impacts, calculate risk factors, and mint NFTs representing simulated asteroids with rarity tied to scientific accuracy.
+An interactive web platform that allows users to explore real asteroid trajectories, simulate Earth impacts using NASA and USGS datasets, and mint NFTs based on scientifically calculated risk factors. Defend Earth in a gamified, scientifically accurate environment.
+
+![Risk-Based AstroNFT Simulator](https://img.shields.io/badge/Next.js-14.0.4-black?style=for-the-badge&logo=next.js)
+![React](https://img.shields.io/badge/React-18.2.0-blue?style=for-the-badge&logo=react)
+![Three.js](https://img.shields.io/badge/Three.js-0.158.0-black?style=for-the-badge&logo=three.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.3.3-blue?style=for-the-badge&logo=typescript)
 
 ## 🚀 Features
 
-- **Real-Time NASA Data**: Live asteroid trajectory data from NASA's Center for Near-Earth Object Studies (CNEOS)
-- **Interactive Simulations**: Model asteroid impacts with scientific accuracy
-- **Risk Assessment**: Calculate risk factors based on asteroid size, velocity, and environmental consequences
-- **Impact Visualization**: Visualize impact zones including seismic and tsunami effects
-- **NFT Integration**: Mint unique NFTs representing asteroids with rarity tied to risk factors
-- **Educational Storytelling**: Make complex asteroid impact science accessible and engaging
-- **Defense Strategies**: Test mitigation strategies and "defend Earth" in a gamified environment
+### 🌟 Core Functionality
+- **Real Asteroid Data**: Integration with NASA NEO API for live asteroid tracking
+- **3D Visualization**: Interactive Three.js-based asteroid trajectory visualization
+- **Impact Simulation**: Scientifically accurate impact energy and crater modeling
+- **Risk Assessment**: Multi-factor risk calculation based on asteroid parameters
+- **Earth Defense**: Test mitigation strategies including kinetic impactors and nuclear devices
+- **NFT Minting**: Mint collectible NFTs with rarity tied to calculated risk factors
 
-## 📁 Project Structure
+### 🎯 Key Components
+- **Simulation Dashboard**: Interactive controls for asteroid selection and parameter adjustment
+- **3D Asteroid Visualizer**: Real-time trajectory animation with orbital mechanics
+- **Impact Map**: 2D visualization of impact zones, seismic effects, and tsunami risks
+- **Risk Factor Display**: Comprehensive risk analysis with color-coded threat levels
+- **Defense Simulator**: Gamified Earth defense with multiple mitigation strategies
+- **NFT Gallery**: Mint and manage asteroid NFTs with scientific metadata
+
+## 🛠️ Technology Stack
+
+| Layer | Technology | Purpose |
+|-------|------------|---------|
+| **Frontend** | Next.js 14, React 18 | Interactive web application |
+| **3D Graphics** | Three.js, React Three Fiber | Asteroid trajectory visualization |
+| **2D Maps** | D3.js, Leaflet.js | Impact zone mapping |
+| **Backend** | Node.js, Express | API and simulation engine |
+| **Blockchain** | Polygon Testnet | NFT minting and metadata |
+| **Styling** | Tailwind CSS | Modern, responsive design |
+| **Animation** | Framer Motion | Smooth UI transitions |
+| **State Management** | Zustand | Application state management |
+
+## 📊 System Architecture
 
 ```
-astro-nft-simulator/
-├── index.html          # Main HTML file
-├── css/
-│   └── styles.css      # Main stylesheet with Palantir-inspired design
-├── js/
-│   └── main.js         # Interactive features and animations
-├── images/             # Space and asteroid-themed assets
-│   ├── aip-hero-image.svg
-│   └── bootcamp-placeholder.svg
-├── Untitled design (1).png  # Custom asteroid logo
-└── README.md           # Project documentation
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   USER LAYER    │    │  FRONTEND LAYER │    │  BACKEND LAYER  │    │  DATA LAYERS    │
+│                 │    │                 │    │                 │    │                 │
+│ • Scientists    │◄──►│ • React/Next.js │◄──►│ • Node.js API   │◄──►│ • NASA NEO API  │
+│ • Educators     │    │ • Three.js 3D   │    │ • Simulation    │    │ • USGS DEM      │
+│ • General Public│    │ • D3.js Maps    │    │ • Orbital Mech  │    │ • USGS NEIC     │
+│ • NFT Collectors│    │ • UI Controls   │    │ • Risk Calc     │    │ • Blockchain    │
+└─────────────────┘    └─────────────────┘    └─────────────────┘    └─────────────────┘
 ```
 
-## 🛠️ Technologies Used
+## 🚀 Getting Started
 
-- **HTML5**: Semantic markup with accessibility features
-- **CSS3**: Modern styling with animations and responsive design
-- **JavaScript (ES6+)**: Interactive simulations and real-time data integration
-- **NASA APIs**: Real-time Near-Earth Object data
-- **USGS Data**: Geological and seismic modeling information
-- **Web3 Integration**: NFT minting capabilities
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+- NASA API key (optional, defaults to DEMO_KEY)
 
-## 🎨 Design Philosophy
+### Installation
 
-Built with Palantir's sophisticated UI/UX aesthetic while focusing on space and scientific themes:
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/risk-based-astronft-simulator.git
+   cd risk-based-astronft-simulator
+   ```
 
-### Visual Elements
-- Dark theme with cosmic gradient backgrounds
-- Space-themed color palette with asteroid-inspired accents
-- Modern typography optimized for scientific content
-- Interactive hover effects and smooth animations
-- Scientific data visualization components
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-### Layout Components
-- Fixed navigation with space-themed branding
-- Hero section: "Defend Earth from Asteroids"
-- Core features showcase (Trajectory Modeling, Risk Analysis, etc.)
-- NASA/USGS partnerships section
-- Interactive value propositions
-- NFT gallery and minting interface
+3. **Set up environment variables**
+   ```bash
+   # Create .env.local file
+   echo "NASA_API_KEY=your_nasa_api_key_here" > .env.local
+   ```
 
-## 🔧 Setup Instructions
+4. **Start the development server**
+   ```bash
+   npm run dev
+   ```
 
-1. **Clone or download** this project to your local machine
-2. **Open index.html** in your web browser
-3. **For development**: Use a local server (like Live Server in VS Code)
-4. **NASA API**: Sign up for NASA API key for real-time data access
+5. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-### Data Sources Configuration
+## 🎮 How to Use
 
-The simulator integrates with multiple scientific data sources:
+### 1. Asteroid Selection
+- Browse available asteroids from NASA's NEO database
+- Select potentially hazardous asteroids for simulation
+- View detailed asteroid parameters (diameter, velocity, orbital data)
 
-- **NASA CNEOS**: https://cneos.jpl.nasa.gov/
-- **USGS Geological**: https://www.usgs.gov/
-- **Near-Earth Object Database**: Real-time asteroid tracking
-- **Seismic Data**: Geological impact modeling
+### 2. Impact Simulation
+- Run impact probability calculations
+- Visualize 3D asteroid trajectories
+- Calculate impact energy and crater formation
+- Assess seismic and tsunami risks
 
-## 🌌 Core Simulator Features
+### 3. Risk Assessment
+- View comprehensive risk factor analysis
+- Understand threat levels (Low, Medium, High, Critical)
+- Analyze environmental impact zones
+- Review affected population estimates
 
-### 1. Trajectory Modeling
-- Real-time asteroid path simulation
-- Historical trajectory data
-- Future path predictions
-- Impact probability calculations
+### 4. Earth Defense
+- Select defense strategies (Kinetic Impactor, Gravity Tractor, Nuclear Device)
+- Simulate mitigation effectiveness
+- Compare before/after risk scenarios
+- Achieve successful deflection missions
 
-### 2. Risk Analysis
-- Asteroid size classification
-- Velocity impact assessment
-- Environmental consequence modeling
-- Population risk calculations
+### 5. NFT Minting
+- Mint NFTs representing simulated asteroids
+- Rarity based on calculated risk factors
+- Metadata includes scientific parameters
+- Trade and collect unique asteroid NFTs
 
-### 3. Impact Visualization
-- Interactive 3D Earth models
-- Seismic wave propagation
-- Tsunami zone mapping
-- Environmental damage assessment
+## 📡 API Endpoints
 
-### 4. NFT Minting
-- Unique asteroid representations
-- Rarity based on scientific factors
-- Blockchain integration
-- Collectible digital assets
-
-## 🎯 Educational Components
-
-1. **Interactive Tutorials**: Step-by-step simulation guides
-2. **Scientific Explanations**: Educational content about asteroid science
-3. **Real Data Integration**: Learn with actual NASA observations
-4. **Gamified Learning**: Earn achievements through scientific exploration
-5. **Community Features**: Share discoveries and collaborate
-
-## 📱 Responsive Design
-
-- **Desktop**: Full-featured simulation environment
-- **Tablet**: Optimized touch interactions
-- **Mobile**: Simplified interface for core features
-
-## ⚡ Performance Features
-
-- **Real-Time Data**: Live NASA API integration
-- **Optimized Rendering**: Smooth 3D visualizations
-- **Lazy Loading**: Efficient asset management
-- **Progressive Enhancement**: Works without JavaScript
-- **Caching**: Smart data caching for performance
-
-## 🔍 Scientific Accuracy
-
-- **NASA Standards**: Follows NASA's calculation methods
-- **Peer Review**: Scientific methodology validation
-- **Real Data**: Uses actual asteroid observations
-- **Accuracy Metrics**: Confidence intervals for all calculations
-- **Educational Standards**: Aligned with astronomy curricula
-
-## 🎨 Color Palette
-
-```css
-Space Black: #000000
-Cosmic Dark: #111111
-Asteroid Gray: #1a1a1a
-Orbit Border: #333333
-Star White: #ffffff
-Nebula Blue: #4a90e2
-Impact Orange: #ff6b35
-Danger Red: #e74c3c
+```
+GET  /api/asteroids          - Fetch NASA NEO data
+POST /api/simulate           - Run impact simulation
+POST /api/defend             - Simulate defense strategies
+GET  /api/risk-factor        - Calculate risk score
 ```
 
-## 🚀 Future Enhancements
+## 🔬 Scientific Accuracy
 
-- [ ] Real-time NASA API integration
-- [ ] 3D asteroid visualization
-- [ ] Multiplayer defense scenarios
-- [ ] Advanced NFT marketplace
-- [ ] Mobile app development
-- [ ] VR/AR asteroid exploration
-- [ ] Community leaderboards
-- [ ] Educational curriculum integration
+### Orbital Mechanics
+- Keplerian orbital elements calculation
+- Real-time trajectory propagation
+- Impact probability assessment
+- Miss distance analysis
 
-## 📊 Educational Impact
+### Impact Modeling
+- Kinetic energy calculations
+- Crater scaling laws
+- Seismic magnitude estimation
+- Tsunami risk assessment
 
-- **STEM Learning**: Advanced astronomy and physics concepts
-- **Data Literacy**: Real-world data analysis skills
-- **Critical Thinking**: Risk assessment and decision making
-- **Scientific Method**: Hypothesis testing and validation
-- **Technology Integration**: Modern web technologies and APIs
+### Risk Assessment
+- Multi-factor risk algorithm
+- Population density weighting
+- Environmental impact scoring
+- Comprehensive threat evaluation
+
+## 🎨 NFT System
+
+### Rarity Levels
+- **⭐ Common** (0-10% risk): Minimal threat asteroids
+- **✨ Uncommon** (10-30% risk): Regional impact potential
+- **💎 Rare** (30-60% risk): Continental-scale damage
+- **👑 Epic** (60-80% risk): Global climate effects
+- **🔥 Legendary** (80-100% risk): Extinction-level threat
+
+### Metadata Includes
+- Asteroid name and orbital parameters
+- Impact simulation results
+- Risk factor and threat assessment
+- Scientific accuracy verification
+
+## 🌍 Educational Value
+
+### Learning Objectives
+- Understand orbital mechanics and asteroid dynamics
+- Learn about impact crater formation and scaling
+- Explore Earth defense strategies and mitigation
+- Experience real scientific data visualization
+
+### Target Audience
+- **Scientists & Educators**: Accurate data and educational tools
+- **General Public**: Interactive, gamified learning experience
+- **NFT Enthusiasts**: Collectibles with real scientific value
+- **Students**: Hands-on space science education
 
 ## 🤝 Contributing
 
-We welcome contributions from:
-- Scientists and astronomers
-- Web developers and designers
-- Educators and curriculum developers
-- Blockchain and NFT specialists
-- Data visualization experts
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
+
+### Development Setup
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
 
 ## 📄 License
 
-This project is open source and educational. NASA and USGS data usage follows their respective terms of service.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🔗 Links
+## 🙏 Acknowledgments
 
-- [NASA Near-Earth Object Program](https://cneos.jpl.nasa.gov/)
-- [USGS Geological Survey](https://www.usgs.gov/)
-- [International Astronomical Union](https://www.iau.org/)
-- [Asteroid Impact Monitoring](https://cneos.jpl.nasa.gov/sentry/)
+- **NASA**: For providing the NEO API and asteroid data
+- **USGS**: For environmental and geological datasets
+- **Three.js Community**: For 3D visualization capabilities
+- **Open Source Contributors**: For the amazing libraries and tools
 
-## 🌟 Mission Statement
+## 📞 Support
 
-To make asteroid impact science accessible, engaging, and educational through interactive simulation while fostering a deeper understanding of our cosmic environment and the importance of planetary defense.
+- **Documentation**: [Wiki](https://github.com/yourusername/risk-based-astronft-simulator/wiki)
+- **Issues**: [GitHub Issues](https://github.com/yourusername/risk-based-astronft-simulator/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/yourusername/risk-based-astronft-simulator/discussions)
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+```bash
+npm install -g vercel
+vercel --prod
+```
+
+### Docker
+```bash
+docker build -t astronft-simulator .
+docker run -p 3000:3000 astronft-simulator
+```
 
 ---
 
-**Built with ❤️ for science education and planetary defense awareness.**
+**Built with ❤️ for space science education and asteroid impact awareness**
+
+*Explore the cosmos, defend Earth, and mint the future of scientific NFTs!* 🌌🚀

@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4a90e2;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #357abd;
+}
+
+/* Loading Logo */
+.loading-logo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
+.loading-logo.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-logo img {
+  width: 360px;
+  height: auto;
+  animation: pulse 2s ease-in-out infinite;
+  filter: brightness(0) invert(1);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+/* Scroll animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ripple animation */
+@keyframes ripple {
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Custom button styles */
+.btn-primary {
+  @apply inline-block bg-nebula-blue text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:bg-blue-600 hover:-translate-y-1 hover:shadow-xl;
+}
+
+.btn-hero {
+  @apply inline-block bg-gradient-to-r from-nebula-blue to-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:-translate-y-1 hover:shadow-xl;
+}
+
+/* Container */
+.container {
+  @apply max-w-7xl mx-auto px-8;
+}
+
+/* Section */
+.section {
+  @apply py-20;
+}
+
+.section-title {
+  @apply text-4xl font-bold mb-4 text-center;
+}
+
+.section-subtitle {
+  @apply text-xl text-center mb-12 opacity-80;
+}
