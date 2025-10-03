@@ -37,25 +37,25 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             <AnimatedCard delay={0.2} className="bg-black/20 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
-              <Rocket className="h-12 w-12 text-blue-400 mx-auto mb-4" />
+              <Rocket className="h-12 w-12 mx-auto mb-4" style={{ color: '#4a91e2' }} />
               <h3 className="text-lg font-semibold text-white mb-2">Real Asteroid Data</h3>
               <p className="text-gray-400 text-sm">NASA NEO API integration with live asteroid tracking</p>
             </AnimatedCard>
 
             <AnimatedCard delay={0.3} className="bg-black/20 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
-              <Zap className="h-12 w-12 text-yellow-400 mx-auto mb-4" />
+              <Zap className="h-12 w-12 mx-auto mb-4" style={{ color: '#4a91e2' }} />
               <h3 className="text-lg font-semibold text-white mb-2">Impact Simulation</h3>
               <p className="text-gray-400 text-sm">Scientifically accurate impact energy and crater modeling</p>
             </AnimatedCard>
 
             <AnimatedCard delay={0.4} className="bg-black/20 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
-              <Shield className="h-12 w-12 text-green-400 mx-auto mb-4" />
+              <Shield className="h-12 w-12 mx-auto mb-4" style={{ color: '#4a91e2' }} />
               <h3 className="text-lg font-semibold text-white mb-2">Defense Strategies</h3>
               <p className="text-gray-400 text-sm">Test kinetic impactors, gravity tractors, and nuclear devices</p>
             </AnimatedCard>
 
             <AnimatedCard delay={0.5} className="bg-black/20 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center">
-              <Image className="h-12 w-12 text-purple-400 mx-auto mb-4" />
+              <Image className="h-12 w-12 mx-auto mb-4" style={{ color: '#4a91e2' }} />
               <h3 className="text-lg font-semibold text-white mb-2">Risk-Based NFTs</h3>
               <p className="text-gray-400 text-sm">Mint collectible NFTs with rarity tied to calculated risk factors</p>
             </AnimatedCard>
@@ -66,7 +66,7 @@ export default function Home() {
               href="/simulator"
               className="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-lg transition-all duration-200 text-lg"
             >
-              <Rocket className="h-6 w-6" />
+              <Rocket className="h-6 w-6" style={{ color: '#4a91e2' }} />
               <span>Launch Simulator</span>
             </AnimatedButton>
           </div>

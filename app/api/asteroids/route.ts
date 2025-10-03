@@ -1,97 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server'
-import axios from 'axios'
+import { NextResponse } from 'next/server'
 
-const NASA_API_KEY = process.env.NASA_API_KEY || 'ujQxjG25ystYS7fGWzHTdwcOa2JVFDP7Apxhc0sW'
-const NASA_NEO_URL = 'https://api.nasa.gov/neo/rest/v1/feed'
-const NASA_SMALL_BODY_URL = 'https://ssd-api.jpl.nasa.gov/sbdb.api'
-const NASA_COMETS_URL = 'https://data.nasa.gov/resource/gh4g-9sfh.json'
-
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
-    const { searchParams } = new URL(request.url)
-    const startDate = searchParams.get('start_date') || new Date().toISOString().split('T')[0]
-    const endDate = searchParams.get('end_date') || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
-    const includeComets = searchParams.get('include_comets') === 'true'
-
-    // Fetch data from NASA NEO API (NeoWs)
-    const response = await axios.get(NASA_NEO_URL, {
-      params: {
-        start_date: startDate,
-        end_date: endDate,
-        api_key: NASA_API_KEY
-      }
-    })
-
-    // Fetch comet data if requested
-    let cometData = []
-    if (includeComets) {
-      try {
-        const cometResponse = await fetch(`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/comets?limit=10&filter=near_earth`)
-        const cometResult = await cometResponse.json()
-        cometData = cometResult.comets || []
-      } catch (error) {
-        console.log('Failed to fetch comet data:', error)
-      }
-    }
-
-    // Transform NASA data to our format
-    const asteroids = []
-    const neoData = response.data.near_earth_objects
-
-    for (const date in neoData) {
-      for (const asteroid of neoData[date]) {
-        // Calculate diameter from absolute magnitude (rough approximation)
-        const diameter = Math.pow(10, (6.259 - Math.log10(asteroid.absolute_magnitude_h)) / 2.5) * 1329
-        
-        // Calculate mass (assuming spherical asteroid with average density 2.6 g/cm³)
-        const radius = diameter / 2 / 1000 // Convert to meters
-        const density = 2600 // kg/m³
-        const mass = (4/3) * Math.PI * Math.pow(radius, 3) * density
-
-        asteroids.push({
-          id: asteroid.id,
-          name: asteroid.name,
-          diameter: Math.round(diameter), // meters
-          velocity: asteroid.close_approach_data?.[0]?.relative_velocity?.kilometers_per_hour || 0,
-          mass: Math.round(mass), // kg
-          orbitalPeriod: asteroid.orbital_data?.period_days || 0,
-          eccentricity: asteroid.orbital_data?.eccentricity || 0,
-          inclination: asteroid.orbital_data?.inclination || 0,
-          closeApproachDate: asteroid.close_approach_data?.[0]?.close_approach_date || '',
-          missDistance: asteroid.close_approach_data?.[0]?.miss_distance?.kilometers || 0,
-          relativeVelocity: asteroid.close_approach_data?.[0]?.relative_velocity?.kilometers_per_hour || 0,
-          orbitingBody: asteroid.close_approach_data?.[0]?.orbiting_body || 'Earth',
-          isPotentiallyHazardous: asteroid.is_potentially_hazardous_asteroid,
-          absoluteMagnitude: asteroid.absolute_magnitude_h
-        })
-      }
-    }
-
-    // Combine asteroids and comets
-    const allObjects = [...asteroids, ...cometData]
-    
-    // Filter for potentially hazardous objects and sort by miss distance
-    const hazardousObjects = allObjects
-      .filter(obj => obj.isPotentiallyHazardous)
-      .sort((a, b) => a.missDistance - b.missDistance)
-      .slice(0, 20) // Limit to top 20 most concerning
-
-    return NextResponse.json({
-      asteroids: hazardousObjects,
-      total: hazardousObjects.length,
-      dateRange: { startDate, endDate },
-      dataSources: {
-        nasaNeoApi: true,
-        nasaCometsApi: includeComets,
-        apiKey: 'Real NASA API Key'
-      },
-      note: includeComets ? 'Includes real NASA asteroid and comet data' : 'Real NASA asteroid data'
-    })
-
-  } catch (error) {
-    console.error('Error fetching asteroid data:', error)
-    
-    // Return mock data if API fails
     const mockAsteroids = [
       {
         id: '2000433',
@@ -107,7 +17,8 @@ export async function GET(request: NextRequest) {
         relativeVelocity: 45000,
         orbitingBody: 'Earth',
         isPotentiallyHazardous: false,
-        absoluteMagnitude: 11.16
+        absoluteMagnitude: 11.16,
+        type: 'asteroid'
       },
       {
         id: '2001862',
@@ -123,14 +34,141 @@ export async function GET(request: NextRequest) {
         relativeVelocity: 35000,
         orbitingBody: 'Earth',
         isPotentiallyHazardous: true,
-        absoluteMagnitude: 16.25
+        absoluteMagnitude: 16.25,
+        type: 'asteroid'
+      },
+      {
+        id: '2003554',
+        name: '3554 Amun',
+        diameter: 3200,
+        velocity: 42000,
+        mass: 1.7e13,
+        orbitalPeriod: 1.8,
+        eccentricity: 0.28,
+        inclination: 23.45,
+        closeApproachDate: '2024-03-10',
+        missDistance: 12000000,
+        relativeVelocity: 42000,
+        orbitingBody: 'Earth',
+        isPotentiallyHazardous: true,
+        absoluteMagnitude: 15.8,
+        type: 'asteroid'
+      },
+      {
+        id: '2001989',
+        name: '1989 ML',
+        diameter: 800,
+        velocity: 38000,
+        mass: 2.7e11,
+        orbitalPeriod: 2.1,
+        eccentricity: 0.35,
+        inclination: 8.2,
+        closeApproachDate: '2024-03-25',
+        missDistance: 7500000,
+        relativeVelocity: 38000,
+        orbitingBody: 'Earth',
+        isPotentiallyHazardous: true,
+        absoluteMagnitude: 17.3,
+        type: 'asteroid'
+      },
+      {
+        id: '2002340',
+        name: '2340 Hathor',
+        diameter: 210,
+        velocity: 41000,
+        mass: 1.2e10,
+        orbitalPeriod: 0.77,
+        eccentricity: 0.45,
+        inclination: 5.85,
+        closeApproachDate: '2024-04-05',
+        missDistance: 3200000,
+        relativeVelocity: 41000,
+        orbitingBody: 'Earth',
+        isPotentiallyHazardous: true,
+        absoluteMagnitude: 20.2,
+        type: 'asteroid'
+      },
+      {
+        id: '2003757',
+        name: '3757 Anagolay',
+        diameter: 150,
+        velocity: 39000,
+        mass: 5.3e9,
+        orbitalPeriod: 0.62,
+        eccentricity: 0.52,
+        inclination: 3.1,
+        closeApproachDate: '2024-04-18',
+        missDistance: 2800000,
+        relativeVelocity: 39000,
+        orbitingBody: 'Earth',
+        isPotentiallyHazardous: true,
+        absoluteMagnitude: 20.8,
+        type: 'asteroid'
+      },
+      {
+        id: '2004769',
+        name: '4769 Castalia',
+        diameter: 1800,
+        velocity: 36000,
+        mass: 1.1e12,
+        orbitalPeriod: 1.4,
+        eccentricity: 0.48,
+        inclination: 8.88,
+        closeApproachDate: '2024-05-02',
+        missDistance: 9800000,
+        relativeVelocity: 36000,
+        orbitingBody: 'Earth',
+        isPotentiallyHazardous: true,
+        absoluteMagnitude: 16.9,
+        type: 'asteroid'
+      },
+      {
+        id: '20065803',
+        name: '65803 Didymos',
+        diameter: 780,
+        velocity: 43000,
+        mass: 5.4e11,
+        orbitalPeriod: 2.11,
+        eccentricity: 0.38,
+        inclination: 3.41,
+        closeApproachDate: '2024-05-15',
+        missDistance: 6700000,
+        relativeVelocity: 43000,
+        orbitingBody: 'Earth',
+        isPotentiallyHazardous: true,
+        absoluteMagnitude: 18.0,
+        type: 'asteroid'
+      },
+      {
+        id: '2003200',
+        name: '3200 Phaethon',
+        diameter: 5100,
+        velocity: 47000,
+        mass: 1.4e14,
+        orbitalPeriod: 1.43,
+        eccentricity: 0.89,
+        inclination: 22.25,
+        closeApproachDate: '2024-06-01',
+        missDistance: 21000000,
+        relativeVelocity: 47000,
+        orbitingBody: 'Earth',
+        isPotentiallyHazardous: true,
+        absoluteMagnitude: 14.6,
+        type: 'asteroid'
       }
     ]
 
     return NextResponse.json({
       asteroids: mockAsteroids,
       total: mockAsteroids.length,
-      error: 'Using mock data - NASA API unavailable'
+      dataSources: {
+        nasaNeoApi: false,
+        nasaCometsApi: false,
+        apiKey: 'Test API'
+      },
+      note: 'Test asteroids data'
     })
+  } catch (error) {
+    return NextResponse.json({ error: 'Test API failed' }, { status: 500 })
   }
 }
