@@ -35,22 +35,25 @@ export function ImpactMap() {
   const [mapLoaded, setMapLoaded] = useState(false)
 
   useEffect(() => {
-    // Set up Leaflet icons and CSS after component mounts
+    // Set up Leaflet icons after component mounts
     const setupLeafletIcons = async () => {
-      // Import Leaflet CSS
-      await import('leaflet/dist/leaflet.css')
-      
-      // Import and set up Leaflet
-      const L = await import('leaflet')
-      
-      delete (L.Icon.Default.prototype as any)._getIconUrl
-      L.Icon.Default.mergeOptions({
-        iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
-        iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
-        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-      })
-      
-      setMapLoaded(true)
+      try {
+        // Import and set up Leaflet
+        const L = await import('leaflet')
+        
+        // Fix for default markers in react-leaflet
+        delete (L.Icon.Default.prototype as any)._getIconUrl
+        L.Icon.Default.mergeOptions({
+          iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png',
+          iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon.png',
+          shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+        })
+        
+        setMapLoaded(true)
+      } catch (error) {
+        console.error('Failed to load Leaflet:', error)
+        setMapLoaded(true) // Still show map even if icons fail
+      }
     }
     
     setupLeafletIcons()
@@ -83,17 +86,20 @@ export function ImpactMap() {
   return (
     <div className="w-full h-full relative">
       <MapContainer
-        center={[impactLocation.lat, impactLocation.lng]}
+        center={[impactLocation?.lat || 0, impactLocation?.lng || 0]}
         zoom={6}
         className="w-full h-full rounded-lg"
+        style={{ height: '100%', width: '100%' }}
       >
         <TileLayer
           url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+          maxZoom={18}
+          minZoom={2}
         />
 
         {/* Impact Location Marker */}
-        <Marker position={[impactLocation.lat, impactLocation.lng]}>
+        <Marker position={[impactLocation?.lat || 0, impactLocation?.lng || 0]}>
           <Popup>
             <div className="text-center">
               <h3 className="font-bold text-lg">{currentAsteroid.name}</h3>
@@ -104,7 +110,7 @@ export function ImpactMap() {
 
         {/* Crater Zone */}
         <Circle
-          center={[impactLocation.lat, impactLocation.lng]}
+          center={[impactLocation?.lat || 0, impactLocation?.lng || 0]}
           radius={craterRadius * 1000} // Convert to meters
           pathOptions={{
             color: '#ef4444',
@@ -124,7 +130,7 @@ export function ImpactMap() {
 
         {/* Seismic Zone */}
         <Circle
-          center={[impactLocation.lat, impactLocation.lng]}
+          center={[impactLocation?.lat || 0, impactLocation?.lng || 0]}
           radius={seismicRadius * 1000}
           pathOptions={{
             color: '#f59e0b',
@@ -146,7 +152,7 @@ export function ImpactMap() {
         {/* Tsunami Zone (only if ocean impact) */}
         {simulationResults.tsunamiRisk > 0.3 && (
           <Circle
-            center={[impactLocation.lat, impactLocation.lng]}
+            center={[impactLocation?.lat || 0, impactLocation?.lng || 0]}
             radius={tsunamiRadius * 1000}
             pathOptions={{
               color: '#06b6d4',

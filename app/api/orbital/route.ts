@@ -5,10 +5,11 @@ const NASA_SMALL_BODY_URL = 'https://ssd-api.jpl.nasa.gov/sbdb.api'
 const NASA_COMETS_URL = 'https://data.nasa.gov/resource/gh4g-9sfh.json'
 
 export async function GET(request: NextRequest) {
+  const { searchParams } = new URL(request.url)
+  const asteroidId = searchParams.get('id')
+  const includeComets = searchParams.get('include_comets') === 'true'
+  
   try {
-    const { searchParams } = new URL(request.url)
-    const asteroidId = searchParams.get('id')
-    const includeComets = searchParams.get('include_comets') === 'true'
 
     if (asteroidId) {
       // Fetch detailed orbital data for specific asteroid from Small-Body Database

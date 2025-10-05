@@ -5,12 +5,13 @@ const USGS_EARTHQUAKE_URL = 'https://earthquake.usgs.gov/fdsnws/event/1/query'
 const USGS_ELEVATION_URL = 'https://elevation.nationalmap.gov/arcgis/services/3DEPElevation/ImageServer/WCSServer'
 
 export async function GET(request: NextRequest) {
+  const { searchParams } = new URL(request.url)
+  const dataType = searchParams.get('type') // 'earthquake' or 'elevation'
+  const lat = searchParams.get('lat')
+  const lng = searchParams.get('lng')
+  const radius = searchParams.get('radius') || '1000' // km
+  
   try {
-    const { searchParams } = new URL(request.url)
-    const dataType = searchParams.get('type') // 'earthquake' or 'elevation'
-    const lat = searchParams.get('lat')
-    const lng = searchParams.get('lng')
-    const radius = searchParams.get('radius') || '1000' // km
 
     if (dataType === 'earthquake') {
       // Fetch earthquake data from USGS NEIC

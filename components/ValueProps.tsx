@@ -68,7 +68,7 @@ export default function ValueProps() {
           {valueProps.map((prop, index) => (
             <div
               key={index}
-              ref={(el) => (propItemsRef.current[index] = el)}
+              ref={(el) => { propItemsRef.current[index] = el }}
               className="bg-asteroid-gray p-10 rounded-xl border border-orbit-border transition-all duration-300 hover:-translate-y-2 hover:border-nebula-blue hover:shadow-lg hover:shadow-nebula-blue/15"
             >
               <h3 className="text-2xl text-gray-400 mb-2">{prop.letter}</h3>

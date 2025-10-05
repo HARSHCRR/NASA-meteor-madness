@@ -59,7 +59,7 @@ export default function Awards() {
           {awards.map((award, index) => (
             <div
               key={index}
-              ref={(el) => (awardItemsRef.current[index] = el)}
+              ref={(el) => { awardItemsRef.current[index] = el }}
               className="bg-asteroid-gray p-8 rounded-xl border border-orbit-border"
             >
               <h3 className="text-xl mb-4 font-bold">{award.title}</h3>

@@ -27,7 +27,7 @@ export function SimulationControls() {
 
   const handleFetchWithComets = async () => {
     setIncludeComets(true)
-    await fetchAsteroids(true)
+    await fetchAsteroids()
   }
 
   const handleAsteroidSelect = (asteroid: Asteroid) => {
@@ -72,7 +72,7 @@ export function SimulationControls() {
             <option value="">Choose an asteroid or comet...</option>
             {availableAsteroids.map((asteroid) => (
               <option key={asteroid.id} value={asteroid.id}>
-                {asteroid.name} ({asteroid.diameter}m, {asteroid.type === 'comet' ? 'Comet' : 'Asteroid'}, {asteroid.isPotentiallyHazardous ? 'Hazardous' : 'Safe'})
+                {asteroid.name} ({asteroid.diameter}m, {asteroid.isPotentiallyHazardous ? 'Hazardous' : 'Safe'})
               </option>
             ))}
           </select>
@@ -183,7 +183,7 @@ export function SimulationControls() {
           <div>
             <span className="text-gray-400">Comets:</span>
             <p className="text-blue-400 font-medium">
-              {availableAsteroids.filter(a => a.type === 'comet').length}
+              {availableAsteroids.filter(a => a.orbitingBody === 'Comet').length}
             </p>
           </div>
         </div>

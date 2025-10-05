@@ -60,6 +60,7 @@ export async function POST(request: NextRequest) {
       tsunamiRisk: newTsunamiRisk,
       affectedArea: newAffectedArea,
       riskFactor: newRiskFactor,
+      impactOccurred: newImpactProbability > 0.5,
       impactLocation: {
         lat: Math.random() * 180 - 90,
         lng: Math.random() * 360 - 180

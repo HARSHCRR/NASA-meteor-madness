@@ -286,14 +286,12 @@ function OrbitPath({ trajectory, isDeflected = false }: {
   const geometry = new THREE.BufferGeometry().setFromPoints(points)
   
   return (
-    <line geometry={geometry}>
-      <lineBasicMaterial 
-        color={isDeflected ? "#4ade80" : "#8b5cf6"} 
-        linewidth={2}
-        transparent
-        opacity={0.6}
-      />
-    </line>
+    <primitive object={new THREE.Line(geometry, new THREE.LineBasicMaterial({ 
+      color: isDeflected ? "#4ade80" : "#8b5cf6",
+      linewidth: 2,
+      transparent: true,
+      opacity: 0.6
+    }))} />
   )
 }
 
@@ -359,7 +357,7 @@ function SceneContent({ showDefense = false }: { showDefense?: boolean }) {
       {trajectory.length > 0 && (
         <OrbitPath 
           trajectory={trajectory} 
-          isDeflected={showDefense && simulationResults?.defenseEffectiveness > 0}
+          isDeflected={showDefense && (simulationResults as any)?.defenseEffectiveness > 0}
         />
       )}
       
@@ -367,7 +365,7 @@ function SceneContent({ showDefense = false }: { showDefense?: boolean }) {
         position={[0, 0, 5]}
         size={asteroidSize}
         trajectory={trajectory}
-        isDeflected={showDefense && simulationResults?.defenseEffectiveness > 0}
+        isDeflected={showDefense && (simulationResults as any)?.defenseEffectiveness > 0}
       />
 
       {/* Labels */}
@@ -457,10 +455,10 @@ export function AsteroidVisualizer({ showDefense = false }: AsteroidVisualizerPr
             <p><span className="text-gray-400">Impact Probability:</span> {(simulationResults.impactProbability * 100).toFixed(2)}%</p>
             <p><span className="text-gray-400">Energy:</span> {simulationResults.impactEnergy.toFixed(1)} MT</p>
             <p><span className="text-gray-400">Risk Factor:</span> {(simulationResults.riskFactor * 100).toFixed(1)}%</p>
-            {showDefense && simulationResults.defenseEffectiveness && (
+            {showDefense && (simulationResults as any).defenseEffectiveness && (
               <p><span className="text-gray-400">Defense Success:</span> 
-                <span className={simulationResults.isSuccessful ? "text-green-400" : "text-red-400"}>
-                  {simulationResults.isSuccessful ? " SUCCESS" : " FAILED"}
+                <span className={(simulationResults as any).isSuccessful ? "text-green-400" : "text-red-400"}>
+                  {(simulationResults as any).isSuccessful ? " SUCCESS" : " FAILED"}
                 </span>
               </p>
             )}

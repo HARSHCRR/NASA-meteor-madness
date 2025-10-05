@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Enhanced impact probability using NASA orbital data
-    const impactProbability = calculateEnhancedImpactProbability(asteroid)
+    const impactProbability = await calculateEnhancedImpactProbability(asteroid)
     
     // Calculate impact energy with improved physics
     const impactEnergy = calculateEnhancedImpactEnergy(asteroid)
@@ -61,6 +61,7 @@ export async function POST(request: NextRequest) {
       tsunamiRisk: tsunamiData.risk,
       affectedArea: affectedAreas.totalArea,
       riskFactor,
+      impactOccurred: impactProbability > 0.5,
       impactLocation,
       trajectory,
       enhancedData: {

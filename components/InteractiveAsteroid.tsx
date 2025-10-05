@@ -136,9 +136,7 @@ function Scene() {
       <directionalLight position={[-5, 5, -5]} intensity={0.8} />
       <pointLight position={[0, 10, 0]} intensity={0.6} />
       <hemisphereLight 
-        skyColor="#87CEEB" 
-        groundColor="#8B4513" 
-        intensity={0.3} 
+        args={["#87CEEB", "#8B4513", 0.3]} 
       />
       
       {/* Asteroid model */}

@@ -66,7 +66,7 @@ export default function Platforms() {
           {platforms.map((platform, index) => (
             <div
               key={index}
-              ref={(el) => (platformItemsRef.current[index] = el)}
+              ref={(el) => { platformItemsRef.current[index] = el }}
               className="bg-asteroid-gray p-8 rounded-xl border border-orbit-border transition-all duration-300 hover:-translate-y-2 hover:border-nebula-blue hover:shadow-lg hover:shadow-nebula-blue/20"
             >
               <h3 className="text-2xl mb-4 text-nebula-blue">{platform.title}</h3>
